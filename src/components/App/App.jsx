@@ -55,7 +55,7 @@ export class App extends Component {
           return this.setState(prevState => ({images: [...prevState.images, ...arr]}));
         } 
 
-        this.setState({ error: true, });
+        // this.setState({ error: true, });
       })
       .catch(error => {
         this.setState({error: true})
