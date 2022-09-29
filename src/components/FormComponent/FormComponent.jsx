@@ -20,16 +20,15 @@ export class FormComponent extends Component{
 
     handleSubmit = (values, { resetForm }) => {        
         this.props.onSubmit(values.search);
-        resetForm();
+        // resetForm();
     }
 
     render() {
 
         return (<Formik initialValues={{ search: "" }} onSubmit={this.handleSubmit} validationSchema={ValidationSchema}>
 
-                    {({ isSubmitting }) =>
-                        <FormComponentStyled>
-                            <button type="submit" disabled={isSubmitting}>
+                    <FormComponentStyled>
+                            <button type="submit">
                                 <SearchIcon />
                             </button>
 
@@ -42,7 +41,6 @@ export class FormComponent extends Component{
                             />
                             <ErrorMessage name="search" component="div" />
                         </FormComponentStyled>
-                    }
                     
                 </Formik>)
     }

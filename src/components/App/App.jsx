@@ -87,7 +87,7 @@ export class App extends Component {
 
         {loading ? <Audio /> : <ImageGallery images={images} onClick={ this.onClickZoomImage } />}
 
-        {images.length !== 0 && <Button onClick={this.onClickLoadMore} disable={ error } />}
+        {images.length !== 0 && !error && <Button onClick={this.onClickLoadMore}/>}
         
         {largeImageUrl && <Modal onClose={this.closeModal}><img src={largeImageUrl} alt="photodescription" /></Modal>}        
         
