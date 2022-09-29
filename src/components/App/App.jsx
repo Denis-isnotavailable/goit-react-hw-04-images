@@ -30,7 +30,7 @@ export class App extends Component {
 
   formSubmitHandler = data => {    
     if (data.trim() !== "" && this.state.searchWord !== data) {      
-      this.setState({ searchWord: data, page: 1, images: [], loading: true, });      
+      this.setState({ searchWord: data, page: 1, images: [], loading: true, error: false });      
     }    
   }
 
