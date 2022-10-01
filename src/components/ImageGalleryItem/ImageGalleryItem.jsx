@@ -1,24 +1,19 @@
-import { Component } from "react";
 import PropTypes from 'prop-types';
 import { ImageGalleryItemStyled } from "./ImageGalleryItem.styled";
 
 
 
-export class ImageGalleryItem extends Component {
+export const ImageGalleryItem = ({ webformatUrl, largeImageUrl, onClick }) => {
 
-    handleImgClick = () => {
-        const { largeImageUrl, } = this.props;
-        this.props.onClick(largeImageUrl);
+    const handleImgClick = () => {        
+        onClick(largeImageUrl);
     }
 
-    render() {
-        const { webformatUrl, } = this.props;
-        return (
-            <ImageGalleryItemStyled onClick={this.handleImgClick}>
+    return (
+            <ImageGalleryItemStyled onClick={handleImgClick}>
                 <img src={webformatUrl} alt="contextphoto" />
             </ImageGalleryItemStyled>
         );
-    }
 }
 
 

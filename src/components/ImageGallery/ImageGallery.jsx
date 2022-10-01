@@ -1,23 +1,18 @@
-import React, { Component } from "react";
 import PropTypes from 'prop-types';
 import { ImageGalleryStyled } from "./ImageGallery.styled";
 import { ImageGalleryItem } from "components/ImageGalleryItem/ImageGalleryItem";
 
 
-export class ImageGallery extends Component {
+export const ImageGallery = ({ images, onClick }) => {
 
 
-  render() {
-    const { images, onClick } = this.props;
-
-        return (
+  return (
           <ImageGalleryStyled>
             {images.map(({id, webformatUrl, largeImageUrl}) => {
               return <ImageGalleryItem key={id} webformatUrl={webformatUrl} largeImageUrl={largeImageUrl} onClick={ onClick } />
             })}
           </ImageGalleryStyled>  
         );
-    }
 }
 
 ImageGallery.propTypes = {

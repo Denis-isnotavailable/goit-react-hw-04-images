@@ -1,5 +1,4 @@
 import { ErrorMessage, Field, Formik } from "formik";
-import { Component } from "react";
 import * as Yup from "yup";
 import PropTypes from 'prop-types';
 import { FormComponentStyled } from "./FormComponent.styled";
@@ -16,34 +15,31 @@ const ValidationSchema = Yup.object().shape({
 });
 
 
-export class FormComponent extends Component{
+export const FormComponent = ({ onSubmit }) => {
 
-    handleSubmit = (values, { resetForm }) => {        
-        this.props.onSubmit(values.search);
+    const handleSubmit = (values, { resetForm }) => {        
+        onSubmit(values.search);
         // resetForm();
     }
 
-    render() {
+    return (<Formik initialValues={{ search: "" }} onSubmit={handleSubmit} validationSchema={ValidationSchema}>
 
-        return (<Formik initialValues={{ search: "" }} onSubmit={this.handleSubmit} validationSchema={ValidationSchema}>
+                <FormComponentStyled>
+                        <button type="submit">
+                            <SearchIcon />
+                        </button>
 
-                    <FormComponentStyled>
-                            <button type="submit">
-                                <SearchIcon />
-                            </button>
-
-                            <Field
-                                name="search"    
-                                type="text"
-                                autoComplete="off"
-                                // autoFocus
-                                placeholder="Search images and photos"
-                            />
-                            <ErrorMessage name="search" component="div" />
-                        </FormComponentStyled>
-                    
-                </Formik>)
-    }
+                        <Field
+                            name="search"    
+                            type="text"
+                            autoComplete="off"
+                            // autoFocus
+                            placeholder="Search images and photos"
+                        />
+                        <ErrorMessage name="search" component="div" />
+                    </FormComponentStyled>
+                
+            </Formik>)
 }
 
 FormComponent.propTypes = {
